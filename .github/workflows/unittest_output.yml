@@ -1,0 +1,29 @@
+# Name of workflow
+name: unittest_output
+
+on:
+  push:
+    branches:
+      - 'unittest_output'
+      - 'main'
+    paths:
+      - 'data/output/**.csv'
+  
+  # Github does not allow automatic workflow triggering from other workflows to avoid recursive workflow triggering.
+  # To ensure that our unittest_output also runs when new outputs are pushed from the pipeline workflow, we need to add the code below.
+  workflow_run:
+    workflows: ["run-pipeline"]
+    types:
+      - completed
+      
+jobs:
+  output_test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: output_test
+        uses: ./.github/actions/unittest_output
+
+        
