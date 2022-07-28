@@ -41,7 +41,7 @@ def main():
     
     # Train a RandomForestClassifier
     n_estimators = 16
-    model = RandomForestClassifier(n_estimators=n_estimators, random_state=0)
+    model = RandomForestClassifier(n_estimators=n_estimators, random_state=1)
     
     print(f'Training {model}')
     model.fit(X_train, y_train)
