@@ -40,7 +40,7 @@ def main():
     X_train, X_valid, y_train, y_valid = train_test_split(X_full, y_full, test_size=0.3, random_state=0)
     
     # Train a RandomForestClassifier
-    n_estimators = 15
+    n_estimators = 16
     model = RandomForestClassifier(n_estimators=n_estimators, random_state=0)
     
     print(f'Training {model}')
